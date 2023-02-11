@@ -1,0 +1,1 @@
+mysql -u admin -phoneymilkpass honeymilk < /docker-entrypoint-initdb.d/sql/users.sql

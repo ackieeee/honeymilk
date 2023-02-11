@@ -31,8 +31,33 @@ class LoginForm extends Model
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            ['password', 'validateHashPassword'],
         ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'ユーザー名',
+            'rememberMe' => '記憶する',
+            'password' => 'パスワード',
+        ];
+    }
+
+    public function validateHashPassword($attribute, $params): void
+    {
+        if ($this->hasErrors()) {
+            return;
+        }
+        $user = $this->getUser();
+        if (empty($user)) {
+            $this->addError($attribute, 'Incorrect username');
+            return;
+        }
+        if (!Yii::$app->getSecurity()->validatePassword($this->password, $user->password)) {
+            $this->addError($attribute, 'Incorrect password');
+            return;
+        }
     }
 
     /**
