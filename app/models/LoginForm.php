@@ -27,7 +27,8 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['name', 'password'], 'required', 'message' => 'ユーザー名が必要です'],
+            [['name'], 'required', 'message' => 'ユーザー名を入力してください'],
+            [['password'], 'required', 'message' => 'パスワードを入力してください'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -38,7 +39,7 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'ユーザー名',
+            'name' => 'ユーザー名',
             'rememberMe' => '記憶する',
             'password' => 'パスワード',
         ];
@@ -51,10 +52,12 @@ class LoginForm extends Model
         }
         $user = $this->getUser();
         if (empty($user)) {
-            $this->addError($attribute, 'Incorrect username or password');
+            $this->addError($attribute, 'ユーザー名かパスワードが間違えています');
+            return;
         }
+
         if (!Yii::$app->getSecurity()->validatePassword($this->password, $user->password)) {
-            $this->addError($attribute, 'Incorrect username or password');
+            $this->addError($attribute, 'ユーザー名かパスワードが間違えています');
             return;
         }
     }
