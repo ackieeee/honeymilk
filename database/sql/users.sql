@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
     `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `users` (`email`, `name`, `password`) VALUES
     ('test1@test.email.com', 'testuser1', '$2y$13$1bO6/ikK5l6A8AFYdO4DhuYZLmvAkyFwJP1GT38OXu5PegQbs3gey'),

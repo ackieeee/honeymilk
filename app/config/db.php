@@ -5,7 +5,7 @@ return [
     'dsn' => 'mysql:host=db;dbname=honeymilk',
     'username' => 'admin',
     'password' => 'honeymilkpass',
-    'charset' => 'utf8',
+    'charset' => 'utf8mb4',
 
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
