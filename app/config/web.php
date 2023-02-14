@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'honeymilk',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -45,7 +45,8 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'logFile' => '/var/log/app/app.log',
+                    'levels' => ['error', 'warning', 'info'],
                 ],
             ],
         ],
@@ -54,7 +55,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'site' => 'site/index'
+                'site' => 'site/index',
+                '<controller>/<action>' => '<controller>/<action>'
             ],
         ],
     ],
