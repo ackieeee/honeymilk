@@ -56,6 +56,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'site' => 'site/index',
+                'users' => 'user/index',
                 '<controller>/<action>' => '<controller>/<action>'
             ],
         ],
